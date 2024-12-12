@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Based Blockchain Voting System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            background: #fff;
+        }
+
+        .input-field {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .vote-button {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .yes-button {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .no-button {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        #blockchain-data div {
+            border: 1px solid #ccc;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI-Based Blockchain Voting System</h1>
+        <div id="verification-box">
+            <h2>Iris Scan Verification</h2>
+            <input type="text" id="irisData" placeholder="Enter Simulated Iris Data">
+            <button class="button" onclick="verifyIris()">Verify Iris</button>
+            <p id="verification-result"></p>
+        </div>
+
+        <div id="voting-box" style="display: none;">
+            <h2>Cast Your Vote</h2>
+            <button class="button vote-button" onclick="selectCandidate('Candidate A')">Vote for Candidate A</button>
+            <button class="button vote-button" onclick="selectCandidate('Candidate B')">Vote for Candidate B</button>
+            <p id="selected-vote"></p>
+        </div>
+
+        <div id="confirmation-box" style="display: none;">
+            <p>Are you sure you want to confirm your vote?</p>
+            <button class="button yes-button" onclick="confirmVote()">Yes</button>
+            <button class="button no-button" onclick="cancelVote()">No</button>
+        </div>
+
+        <p id="blockchain-result"></p>
+    </div>
+
+    <!-- New section to view the entire blockchain -->
+    <h2>Recorded Votes on Blockchain</h2>
+    <button class="button" onclick="displayBlockchain()">View Recorded Votes</button>
+    <div id="blockchain-data"></div>
+
+    <script>
+        // Sample Iris database for verification
+        const irisDatabase = [
+            { id: 1, irisData: "123-abc" },
+            { id: 2, irisData: "456-def" },
+            { id: 3, irisData: "789-ghi" }
+        ];
+
+        // Block class for Blockchain structure
+        class Block {
+            constructor(index, timestamp, data, previousHash = '') {
+                this.index = index;
+                this.timestamp = timestamp;
+                this.data = data;
+                this.previousHash = previousHash;
+                this.hash = this.calculateHash();
+            }
+
+            calculateHash() {
+                return ${this.index}${this.previousHash}${this.timestamp}${JSON.stringify(this.data)}.hashCode();
+            }
+        }
+
+        // Blockchain class to handle blockchain operations
+        class Blockchain {
+            constructor() {
+                this.chain = [this.createGenesisBlock()];
+            }
+
+            createGenesisBlock() {
+                return new Block(0, "01/01/2023", "Genesis Block", "0");
+            }
+
+            getLatestBlock() {
+                return this.chain[this.chain.length - 1];
+            }
+
+            addBlock(newBlock) {
+                newBlock.previousHash = this.getLatestBlock().hash;
+                newBlock.hash = newBlock.calculateHash();
+                this.chain.push(newBlock);
+            }
+        }
+
+        // Extend String prototype to simulate hash function (simple demonstration only)
+        String.prototype.hashCode = function () {
+            let hash = 0, i, chr;
+            for (i = 0; i < this.length; i++) {
+                chr = this.charCodeAt(i);
+                hash = ((hash << 5) - hash) + chr;
+                hash |= 0; // Convert to 32bit integer
+            }
+            return hash.toString();
+        };
+
+        // Initialize blockchain for voting
+        const votingBlockchain = new Blockchain();
+        let selectedVote = '';
+
+        function verifyIris() {
+            const irisData = document.getElementById('irisData').value;
+            const user = irisDatabase.find(entry => entry.irisData === irisData);
+
+            if (user) {
+                document.getElementById('verification-result').textContent = "Iris verified successfully!";
+                document.getElementById('verification-result').style.color = 'green';
+                document.getElementById('voting-box').style.display = 'block';
+            } else {
+                document.getElementById('verification-result').textContent = "Iris verification failed.";
+                document.getElementById('verification-result').style.color = 'red';
+            }
+        }
+
+        function selectCandidate(candidate) {
+            selectedVote = candidate;
+            document.getElementById('selected-vote').textContent = You selected: ${selectedVote};
+            document.getElementById('confirmation-box').style.display = 'block';
+        }
+
+        function confirmVote() {
+            const newBlock = new Block(votingBlockchain.chain.length, new Date().toLocaleString(), { vote: selectedVote });
+            votingBlockchain.addBlock(newBlock);
+
+            document.getElementById('blockchain-result').textContent = Vote confirmed and recorded on blockchain: ${JSON.stringify(newBlock)};
+            document.getElementById('confirmation-box').style.display = 'none';
+        }
+
+        function cancelVote() {
+            document.getElementById('blockchain-result').textContent = "Vote submission canceled.";
+            document.getElementById('confirmation-box').style.display = 'none';
+        }
+
+        // Function to display the entire blockchain data with vote details
+        function displayBlockchain() {
+            const blockchainDisplay = document.getElementById('blockchain-data');
+            blockchainDisplay.innerHTML = ""; // Clear previous data
+
+            if (votingBlockchain.chain.length === 1) {  // Only genesis block present
+                blockchainDisplay.innerHTML = "<p>No votes have been recorded yet.</p>";
+                return;
+            }
+
+            // Display each block starting from index 1 (skipping genesis block)
+            votingBlockchain.chain.slice(1).forEach((block) => {
+                const blockContent = `
+                    <div>
+                        <h4>Block ${block.index} - Timestamp: ${block.timestamp}</h4>
+                        <p><strong>Vote Data:</strong> ${JSON.stringify(block.data.vote)}</p>
+                        <p><strong>Previous Hash:</strong> ${block.previousHash}</p>
+                        <p><strong>Block Hash:</strong> ${block.hash}</p>
+                    </div>
+                `;
+                blockchainDisplay.innerHTML += blockContent;
+            });
+        }
+    </script>
+</body>
+</html>
