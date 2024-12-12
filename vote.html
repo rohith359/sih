@@ -1,0 +1,192 @@
+<html>
+    <head>
+        <title>Vote</title>
+        <style>
+
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                font-family: Arial, sans-serif;
+                background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj4GK-pnwD2jERjPu5lMtL-fiVxBrbV9Wzfw&s');
+                background-size: cover; /* Ensures the image covers the entire body */
+                background-size: 100% 100%;
+                background-position: center; /* Keeps the image centered */
+                background-repeat: no-repeat; /* Prevents the image from repeating */
+                padding: 20px;
+            }
+
+            h1 {
+                margin-top: 30px;
+                color: #333;
+            }
+
+            form {
+                margin: 20px;
+                padding: 20px;
+                background-color: #fff;
+                border-radius: 8px;
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+                max-width: 900px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+
+            th, td {
+                padding: 15px;
+                text-align: center;
+                border: 1px solid #ddd;
+            }
+
+            th {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            td {
+                background-color: #f9f9f9;
+            }
+
+            img {
+                width: 120px;
+                height: 120px;
+                object-fit: cover;
+                border-radius: 8px;
+            }
+
+            button {
+                padding: 10px 20px;
+                font-size: 16px;
+                color: white;
+                background-color: #4CAF50;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            button:hover {
+                background-color: #45a049;
+            }
+
+            button:active {
+                background-color: #3e8e41;
+            }
+
+            @media (max-width: 768px) {
+                img {
+                    width: 100px;
+                    height: 100px;
+                }
+
+                table {
+                    width: 100%;
+                }
+
+                td, th {
+                    font-size: 14px;
+                }
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>Vote for Your Favorite Party</h1>
+        <form method="post" action="vote.php">
+            <table>
+                <tr>
+                    <th>Party Name</th>
+                    <th>Party Logo</th>
+                    <th>VOTE</th>
+                </tr>
+                <tr>
+                    <td>Party A</td>
+                    <td><img src="symbols/binaculars.png" alt="Party A Logo" /></td>
+                    <td><button name="binaculars" type="submit" onclick="return confirm('Are you sure you want to vote for Party A?')">ENTER</button></td>
+                </tr>
+                <tr>
+                    <td>Party B</td>
+                    <td><img src="symbols/bread.png" alt="Party B Logo" /></td>
+                    <td><button name="bread" type="submit" onclick="return confirm('Are you sure you want to vote for Party B?')">ENTER</button></td>
+                </tr>
+                <tr>
+                    <td>Party C</td>
+                    <td><img src="symbols/brush.png" alt="Party C Logo" /></td>
+                    <td><button name="brush" type="submit" onclick="return confirm('Are you sure you want to vote for Party C?')">ENTER</button></td>
+                </tr>
+                <tr>
+                    <td>Party D</td>
+                    <td><img src="symbols/cauliflower.png" alt="Party D Logo" /></td>
+                    <td><button name="cauliflower" type="submit" onclick="return confirm('Are you sure you want to vote for Party D?')">ENTER</button></td>
+                </tr>
+                <tr>
+                    <td>Party E</td>
+                    <td><img src="symbols/chimney.png" alt="Party E Logo" /></td>
+                    <td><button name="chimney" type="submit" onclick="return confirm('Are you sure you want to vote for Party E?')">ENTER</button></td>
+                </tr>
+                <tr>
+                    <td>Party F</td>
+                    <td><img src="symbols/dieselpump.png" alt="Party F Logo" /></td>
+                    <td><button name="dieselpump" type="submit" onclick="return confirm('Are you sure you want to vote for Party F?')">ENTER</button></td>
+                </tr>
+                <tr>
+                    <td>Party G</td>
+                    <td><img src="symbols/dishantenna.png" alt="Party G Logo" /></td>
+                    <td><button name="dishantenna" type="submit" onclick="return confirm('Are you sure you want to vote for Party G?')">ENTER</button></td>
+                </tr>
+                <tr>
+                    <td>Party H</td>
+                    <td><img src="symbols/gascylinder.png" alt="Party H Logo" /></td>
+                    <td><button name="gascylinder" type="submit" onclick="return confirm('Are you sure you want to vote for Party H?')">ENTER</button></td>
+                </tr>
+                <tr>
+                    <td>Party I</td>
+                    <td><img src="symbols/grapes.png" alt="Party I Logo" /></td>
+                    <td><button name="grapes" type="submit" onclick="return confirm('Are you sure you want to vote for Party I?')">ENTER</button></td>
+                </tr>
+                <tr>
+                    <td>Party J</td>
+                    <td><img src="symbols/kettle.png" alt="Party J Logo" /></td>
+                    <td><button name="kettle" type="submit" onclick="return confirm('Are you sure you want to vote for Party J?')">ENTER</button></td>
+                </tr>
+                <tr>
+                    <td>Party K</td>
+                    <td><img src="symbols/slate.png" alt="Party K Logo" /></td>
+                    <td><button name="slate" type="submit" onclick="return confirm('Are you sure you want to vote for Party K?')">ENTER</button></td>
+                </tr>
+                <tr>
+                    <td>Party L</td>
+                    <td><img src="symbols/mixie.png" alt="Party L Logo" /></td>
+                    <td><button name="mixie" type="submit" onclick="return confirm('Are you sure you want to vote for Party L?')">ENTER</button></td>
+                </tr>
+                <tr>
+                    <td>Party M</td>
+                    <td><img src="symbols/pot.png" alt="Party M Logo" /></td>
+                    <td><button name="pot" type="submit" onclick="return confirm('Are you sure you want to vote for Party M?')">ENTER</button></td>
+                </tr>
+                <tr>
+                    <td>Party N</td>
+                    <td><img src="symbols/pressurecooker.png" alt="Party N Logo" /></td>
+                    <td><button name="pressurecooker" type="submit" onclick="return confirm('Are you sure you want to vote for Party N?')">ENTER</button></td>
+                </tr>
+                <tr>
+                    <td>Party O</td>
+                    <td><img src="symbols/ring.png" alt="Party O Logo" /></td>
+                    <td><button name="ring" type="submit" onclick="return confirm('Are you sure you want to vote for Party O?')">ENTER</button></td>
+                </tr>
+                <tr>
+                    <td>NOTA</td>
+                    <td><img src="symbols/nota.webp" alt="NOTA Logo" /></td>
+                    <td><button name="x" type="submit" onclick="return confirm('Are you sure you want to vote for NOTA?')">ENTER</button></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
