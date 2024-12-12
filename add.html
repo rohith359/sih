@@ -1,0 +1,109 @@
+<html>
+<head>
+    <title>Add Voter</title>
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            margin: 0;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVHzrXVZ68x5mGTqHXMfRKJOlFgHm03SAVWg&s');
+            background-size: cover; /* Ensures the image covers the entire body */
+            background-size: 100% 100%;
+            background-position: center; /* Keeps the image centered */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            padding: 20px;
+        }
+
+        /* Header Styling */
+        h3 {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        /* Admin Button Styling */
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: rgb(138, 219, 136);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-spacing: 0;
+        }
+
+        /* Table Header Styling */
+        th {
+            text-align: left;
+            padding-bottom: 12px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        /* Input Field Styling */
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        /* Submit Button Styling */
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Admin Button -->
+    <h3><a href='homepage.php'><button>SignOut</button></a></h3>
+    <br><br><br><br><br><br><br><br><br>
+    <!-- Voter Form -->
+    <form action="add.php" method="post">
+        <table>
+            <tr>
+                <th>Add User Credentials</th>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Enter your Aadhar Number" name="aadharid" required></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Enter your Iris ID" name="irisid" required></td>
+            </tr>
+            <tr>
+                <td align="center"><input type="submit" value="Add"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
